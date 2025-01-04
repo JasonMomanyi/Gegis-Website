@@ -1,0 +1,13 @@
+{
+  "Version": "16.1.0",
+  "Name": "fakecrime-uploader",
+  "DestinationType": "ImageUploader, FileUploader",
+  "RequestMethod": "POST",
+  "RequestURL": "https://fakecrime-uploader.fakecri.me",
+  "Headers": {
+    "Authorization": "35e228f1-89d6-4c73-94b7-a1d3c54cada6"
+  },
+  "Body": "MultipartFormData",
+  "FileFormName": "file",
+  "ErrorMessage": "{json:message}"
+}
