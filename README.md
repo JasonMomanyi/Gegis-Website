@@ -75,9 +75,9 @@ Your help and contributions are greatly appreciated! ❤️
 ---
 
 ## 🌐 **Links & Resources**
-- **Website**: [www.gegis28.com](https://www.gegis28.com)
-- **Documentation**: [GEGIS-28 Docs](https://docs.gegis28.com)
-- **Community**: [Join our Discord](https://discord.gg/yourchannel)
+- **Website**: [www.gegis28.com](https://gegisclassof2028.netlify.app/)
+- **Documentation**: [GEGIS-28 Docs](https://docs.gegis28.top/)
+- **Community**: [Join our Discord](https://discord.gg/invite)
 - **Follow us on Twitter**: [@GEGIS28](https://twitter.com/GEGIS28)
 
 ---
