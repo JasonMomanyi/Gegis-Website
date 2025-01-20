@@ -160,6 +160,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
    - Added placeholders for real links (e.g., to the official website, Discord community, and documentation) to encourage users to explore the platform further.
 
 5. **Contributing & Call to Action**:
-   - Encouraged users to contribute and provide clear instructions for doing so.
-
-This README aims to be both informative and fun while staying professional and relevant to the **GEGIS** project. You can copy this structure and replace placeholders with actual content or links. Enjoy building your GitHub presence!
+   - Encouraged users to contribute and provide clear instructions for doing so. README 
