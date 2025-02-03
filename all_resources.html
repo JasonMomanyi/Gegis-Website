@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Resources</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .resource-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Class Resources</h1>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="searchBar" class="search-bar" placeholder="Search resources...">
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+        <select id="yearFilter">
+            <option value="">Filter by Year</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+        </select>
+
+        <select id="typeFilter">
+            <option value="">Filter by Type</option>
+            <option value="document">Documents</option>
+            <option value="image">Images</option>
+            <option value="video">Videos</option>
+        </select>
+
+        <select id="sortBy">
+            <option value="">Sort by</option>
+            <option value="date">Date Modified</option>
+            <option value="size">Size</option>
+            <option value="name">Name</option>
+        </select>
+    </div>
+
+    <!-- Resources Grid -->
+    <div class="resource-grid" id="resourceContainer">
+        <!-- Resources will be dynamically loaded here -->
+    </div>
+
+    <script>
+        // Function to fetch resources from GitHub API
+        async function fetchResources() {
+            const owner = 'JasonMomanyi';
+            const repo = 'Gegis-Website';
+            const path = 'assets/Resources';
+            
+            try {
+                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`);
+                const data = await response.json();
+                displayResources(data);
+            } catch (error) {
+                console.error('Error fetching resources:', error);
+            }
+        }
+
+        // Function to display resources
+        function displayResources(resources) {
+            const container = document.getElementById('resourceContainer');
+            container.innerHTML = '';
+
+            resources.forEach(resource => {
+                const item = document.createElement('div');
+                item.className = 'resource-item';
+                item.innerHTML = `
+                    <h3>${resource.name}</h3>
+                    <p>Size: ${(resource.size / 1024).toFixed(2)} KB</p>
+                    <a href="${resource.download_url}" target="_blank">Download</a>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // Search functionality
+        document.getElementById('searchBar').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.resource-item');
+            
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+        });
+
+        // Load resources when page loads
+        document.addEventListener('DOMContentLoaded', fetchResources);
+    </script>
+</body>
+</html>
