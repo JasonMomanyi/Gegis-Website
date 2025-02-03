@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Documents</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .document-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .document-item {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Documents</h1>
+    <ul class="document-list" id="documentList"></ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/documents')
+                .then(response => response.json())
+                .then(data => {
+                    const documentList = document.getElementById('documentList');
+                    data.forEach(doc => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'document-item';
+                        listItem.textContent = doc.title;
+                        documentList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching documents:', error));
+        });
+    </script>
+</body>
+</html>
